@@ -1,0 +1,91 @@
+/*
+A1 = 2
+A2 = 3
+A3 = 4
+A4 = 5
+A5 = 6
+A6 = 7
+*/
+const float V_REF = 5.0;     // Analog reference voltage (e.g., 5V or 3.3V)
+const float R_BITS = 10.0;   // ADC resolution (bits)
+const float ADC_STEPS = (1 << int(R_BITS)) - 1;
+const int potentiometerPin = A3;
+
+void setup() {
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  Serial.begin(9600); // Initialize serial communication
+  Serial.println(ADC_STEPS);
+  // for (int i = 2; i <= 7; i++) {
+  // pinMode(i, OUTPUT);
+  // }
+  
+}
+
+void getVoltage() {
+  int rawValue = analogRead(potentiometerPin); // Read the analog input
+  float voltage = (rawValue / ADC_STEPS) * V_REF; // Convert to voltage
+  Serial.print("Voltage: ");
+  Serial.print(voltage, 3); // Print voltage with 3 decimal places
+  Serial.print(" V");
+  for (int i = 2; i < 8; i++) {
+    Serial.print(digitalRead(i));
+  }
+  Serial.println();
+  Serial.println("++++++++++++++++++++++++");
+}
+
+void loop() {
+  // for (int i = 2; i <= 7; i++) {
+  // digitalWrite(i, HIGH);
+  // }
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+
+  
+  for (int a = 0; a < 2; a++) {
+    if (a % 2 == 0) {
+          digitalWrite(2, HIGH);
+          getVoltage();
+          delay(200);
+    }
+    else {
+      digitalWrite(2, LOW);
+      getVoltage();
+      delay(200);
+      a = 0;
+    }
+    for (int b = 0; b < 2; b++) {
+      if (b % 2 == 0) {
+        digitalWrite(4, HIGH);
+        getVoltage();
+        delay(200);
+      }
+      else {
+        digitalWrite(4, LOW);
+        getVoltage();
+        delay(200);
+      }
+      for (int c = 0; c < 2; c++) {
+        if (c % 2 == 0) {
+          digitalWrite(6, HIGH);
+          getVoltage();
+          delay(200);
+        }
+        else {
+          digitalWrite(6, LOW);
+          getVoltage();
+          delay(200);
+        }
+      } 
+    }
+  }
+}
