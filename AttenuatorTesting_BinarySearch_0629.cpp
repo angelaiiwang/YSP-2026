@@ -52,22 +52,22 @@ void setVoltage(String bin) {
 }
 
 int binarySearch(int left, int right) {
-    int result = left;
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        setVoltage(toBinary(mid));
-        writeVoltage();
+  int result = left;
+  while (left < right) {
+      int mid = left + (right - left) / 2;
+      setVoltage(toBinary(mid));
+      writeVoltage();
 
-        float measured = getVoltage();
-        if (abs(measured - threshold) <= tolerance) {
-            return mid;
-        } else if (measured < threshold) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
+      float measured = getVoltage();
+      if (abs(measured - threshold) <= tolerance) {
+          return mid;
+      } else if (measured < threshold) {
+          right = mid;
+      } else {
+          left = mid + 1;
+      }
+  }
+  return left;
 }
 
 void setup() {
