@@ -11,28 +11,37 @@ const float V_REF = 5.0;     // Analog reference voltage (e.g., 5V or 3.3V)
 const float R_BITS = 10.0;   // ADC resolution (bits)
 const float ADC_STEPS = (1 << int(R_BITS)) - 1;
 const int potentiometerPin = A3;
-const float threshold = 1.3;
-int newStart = 0;
-float tolerance = 0.01;
-bool finished = 0;
+const float threshold = 1.4; //Required voltage threshold
+float tolerance = 0.01; //Tolerance for the algorithm closeness
+bool finished = 0;  //Final check for the algorithm completion
 
+//Minimum and Maximum voltage values from attenuation
+float minVoltage;
+float maxVoltage;
+
+//Method returns the voltage recorded by analog pin
 float getVoltage() {
   int rawValue = analogRead(potentiometerPin); // Read the analog input
   float voltage = (rawValue / ADC_STEPS) * V_REF; // Convert to voltage
   return(voltage);
 }
 
+//Method writes the voltage of the MINIMUM, MAXIMUM and OUTPUT voltages
 void writeVoltage() {
-  Serial.print("Voltage: ");
+  Serial.print("Min:");
+  Serial.print(minVoltage);
+  Serial.print("\t");
+
+  Serial.print("Max:");
+  Serial.print(maxVoltage);
+  Serial.print("\t");
+
+  Serial.print("Output:");
   Serial.print(getVoltage(), 3); // Print voltage with 3 decimal places
-  Serial.print(" V");
-  for (int i = 2; i < 8; i++) {
-    Serial.print(digitalRead(i));
-  }
   Serial.println();
-  Serial.println("++++++++++++++++++++++++");
 }
 
+//Method returns the binary string of a integer input
 String toBinary(int num) {
   String bin = String(num, BIN);
   int len = bin.length();
@@ -45,17 +54,21 @@ String toBinary(int num) {
   return binary;
 }
 
+//Method sets the attenuator to produce new voltage output
 void setVoltage(String bin) {
   for (int i = 0; i < 6; i++) {
     digitalWrite(i + 2, bin[i] == '1' ? HIGH : LOW);
   }
 }
 
+//Returns the voltage at the number after setting the 
+//attenuator to produce new voltage output
 float measureAt(int num) {
   setVoltage(toBinary(num));
   return getVoltage();
 }
 
+//Interpolation search algorithm
 int interpolationSearch(int left, int right) {
   int pos;
 
@@ -64,6 +77,7 @@ int interpolationSearch(int left, int right) {
           (measureAt(right)- measureAt(left));
     if (abs(measureAt(pos) - threshold) <= tolerance) {
       finished = 1;
+      writeVoltage();
       return pos;
     }
     else if (measureAt(pos) < threshold) {
@@ -84,7 +98,8 @@ void setup() {
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   Serial.begin(9600);
-  Serial.println(ADC_STEPS);  
+  minVoltage = measureAt(0);
+  maxVoltage = measureAt(63); 
 }
 
 void loop() {
@@ -94,9 +109,11 @@ void loop() {
   digitalWrite(5, HIGH);
   digitalWrite(6, HIGH);
   digitalWrite(7, HIGH);
+  delay(5000);
   interpolationSearch(0, 63); 
   writeVoltage();
   while (finished){
     delay(1000);
+    writeVoltage();
   }
 }
