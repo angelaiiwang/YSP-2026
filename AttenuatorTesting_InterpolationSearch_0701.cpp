@@ -18,11 +18,14 @@ bool finished = 0;  //Final check for the algorithm completion
 //Minimum and Maximum voltage values from attenuation
 float minVoltage;
 float maxVoltage;
+float oldVoltage; 
+float newVoltage; 
 
 //Method returns the voltage recorded by analog pin
 float getVoltage() {
   int rawValue = analogRead(potentiometerPin); // Read the analog input
   float voltage = (rawValue / ADC_STEPS) * V_REF; // Convert to voltage
+  newVoltage = voltage; 
   return(voltage);
 }
 
@@ -58,6 +61,17 @@ String toBinary(int num) {
 void setVoltage(String bin) {
   for (int i = 0; i < 6; i++) {
     digitalWrite(i + 2, bin[i] == '1' ? HIGH : LOW);
+  }
+}
+
+// check voltage, check abs value dif. between 
+bool checkVoltageChange () {
+  if (abs(oldVoltage - newVoltage) <= (tolerance * 5)) {
+    return false; 
+  }
+  else {
+    oldVoltage = newVoltage; 
+    return true; 
   }
 }
 
@@ -115,5 +129,8 @@ void loop() {
   while (finished){
     delay(1000);
     writeVoltage();
+    if (checkVoltageChange()) {
+      finished = 0; 
+    }
   }
 }
