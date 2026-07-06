@@ -49,16 +49,8 @@ void setup() {
   Serial.println(ADC_STEPS);  
 }
 
-void loop() {
-  digitalWrite(2, HIGH);
-  digitalWrite(3, HIGH);
-  digitalWrite(4, HIGH);
-  digitalWrite(5, HIGH);
-  digitalWrite(6, HIGH);
-  digitalWrite(7, HIGH);
-
+void linearSearch() {
   float voltage = 0; 
-
   for (int i = 0; i < 64; i++) 
   {
     Serial.print("Attenuation: ");
@@ -96,4 +88,15 @@ void loop() {
     digitalWrite(6, HIGH);
     digitalWrite(7, HIGH);
   }
+}
+
+void loop() {
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+
+  linearSearch(); 
 }
