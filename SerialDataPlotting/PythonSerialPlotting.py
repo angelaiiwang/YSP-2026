@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ---- Configuration ----------------------------------------------------
-EXCEL_FILE = "arduino_data.xlsx"
+EXCEL_FILE = "SerialDataPlotting/arduino_data.xlsx"
 SHEET_NAME = "Attenuator Data Reading 2"
 X_COLUMN = "Time"
 Y_COLUMNS = ["Value"]        # add more column names here to plot multiple lines
@@ -48,6 +48,8 @@ def main():
     fig.tight_layout()
     fig.savefig("plot.png", dpi=150)   # saves a copy to disk
     plt.show()                          # opens an interactive window
+
+    return y
 
 
 if __name__ == "__main__":

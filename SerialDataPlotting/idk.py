@@ -2,13 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.fft import fft, fftfreq
 
-# 1. Generate a dummy signal
-sampling_rate = 1000.0  # Hz
-time_step = 1.0 / sampling_rate
-t = np.arange(0, 1.0, time_step)
-signal = np.sin(2 * np.pi * 133 * t)  # 50 Hz sine wave
-signal2 = np.cos(2 * np.pi * 100 * t)
-signal3 = signal * signal2
+import PythonSerialPlotting
+signal3 = PythonSerialPlotting.main()
 
 # 2. Compute the FFT
 fft_output = fft(signal3)
