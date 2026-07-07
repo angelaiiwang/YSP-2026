@@ -14,7 +14,7 @@ const int potentiometerPin = A3;
 const float threshold = 1.3; 
 
 float getVoltage() {
-  int rawValue = analogRead(potentiometerPin); // Read the analog input
+  int rawValue = analogRead(potentiometerPin); // Read the analog input value
   float voltage = (rawValue / ADC_STEPS) * V_REF; // Convert to voltage
   Serial.print("Voltage: ");
   Serial.print(voltage, 3); // Print voltage with 3 decimal places
