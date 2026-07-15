@@ -9,7 +9,7 @@ shifts the limiter's notch/minimum to a different center frequency.
 Auto-tuning searches the synthesized code bank and selects the code
 whose minimum lands closest to a fixed target frequency (a "set value"
 for now, no live tracking), then plots before vs after.
-
+by: CX
 Requirements: numpy, pandas, matplotlib
 """
 
