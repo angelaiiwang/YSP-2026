@@ -6,7 +6,7 @@ X_COLUMN = None
 Y_COLUMN = None
 LEARNING_RATE = 0.01
 EPSILON = 1e-6              # stop when epoch-average cost stops improving by more than this
-MAX_EPOCHS = 100         # safety cap: one epoch = one full pass through the data
+MAX_EPOCHS = 1000         # safety cap: one epoch = one full pass through the data
 
 THETA_PATH = ".\\MachineLearning\\theta_stochastic.npy"
 COST_HISTORY_PATH = ".\\MachineLearning\\cost_history.npy"

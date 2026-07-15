@@ -125,6 +125,10 @@ import numpy as np
 # ==== EDIT THESE ====
 CSV_PATH = ".\\MachineLearning\\data.csv"
 THETA_PATH = ".\\MachineLearning\\theta.npy"
+
+
+
+
 X_COLUMN = None
 Y_COLUMN = None
 OUTPUT_PATH = ".\\MachineLearning\\plot.png"
@@ -182,14 +186,20 @@ def main():
 
     # --- Load trained parameters BEFORE building the figure ---
     try:
-        theta = np.load(THETA_PATH)
+        theta = np.load(".\\MachineLearning\\theta.npy")
         intercept, slope = theta[0], theta[1]
         
-        theta_epsilon = np.load(THETA_PATH)
+        theta_epsilon = np.load(".\\MachineLearning\\theta_epsilon.npy")
         intercept_epsilon, slope_epsilon = theta_epsilon[0], theta_epsilon[1]
 
-        theta_stochastic = np.load(THETA_PATH)
+        theta_stochastic = np.load(".\\MachineLearning\\theta_stochastic.npy")
         intercept_stochastic, slope_stochastic = theta_stochastic[0], theta_stochastic[1]
+
+        theta_mae = np.load(".\\MachineLearning\\theta_mae.npy")
+        intercept_mae, slope_mae = theta_mae[0], theta_mae[1]
+
+        theta_e = np.load(".\\MachineLearning\\theta_e.npy")
+        intercept_e, slope_e = theta_e[0], theta_e[1]
                 
     except FileNotFoundError:
         print(f"Error: {THETA_PATH} not found. Run the training script first.", file=sys.stderr)
@@ -209,10 +219,18 @@ def main():
     epsilon_line_x = np.linspace(x_min, x_max, 100)
     epsilon_line_y = intercept_epsilon + slope_epsilon * epsilon_line_x
     plt.plot(epsilon_line_x, epsilon_line_y, color="green", linewidth=2, label="Epsilon Predicted line")
-    
+
     stochastic_line_x = np.linspace(x_min, x_max, 100)
     stochastic_line_y = intercept_stochastic + slope_stochastic * stochastic_line_x
     plt.plot(stochastic_line_x, stochastic_line_y, color="blue", linewidth=2, label="Stochastic Predicted line")
+
+    mae_line_x = np.linspace(x_min, x_max, 100)
+    mae_line_y = intercept_mae + slope_mae * mae_line_x
+    plt.plot(mae_line_x, mae_line_y, color="orange", linewidth=2, label="MAE Predicted line")
+
+    e_line_x = np.linspace(x_min, x_max, 100)
+    e_line_y = intercept_e + slope_e * e_line_x
+    plt.plot(e_line_x, e_line_y, color="purple", linewidth=2, label="E Predicted line")
 
     plt.xlabel(x_label)
     plt.ylabel(y_label)
