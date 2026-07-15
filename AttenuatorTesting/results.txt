@@ -1,0 +1,85 @@
+10 MHz, 10 dBm
+
+Threshold 0.85
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.0518 %
+    Binary converged -> Time: 319 ms, Iterations: 5, Error: 0.0518 %
+    Fib converged -> Time: 474 ms, Iterations: 7, Error: 0.6268 %
+    Linear converged -> Time: 4460 ms, Iterations: 63, Error: 1.0983 %
+
+Threshold 0.9
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.0760 %
+    Binary converged -> Time: 319 ms, Iterations: 5, Error: 0.0760 %
+    Fib converged -> Time: 402 ms, Iterations: 6, Error: 0.4670 %
+    Linear converged -> Time: 4173 ms, Iterations: 59, Error: 0.6191 %
+
+Threshold 0.95
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.3241 %
+    Binary converged -> Time: 319 ms, Iterations: 5, Error: 0.3241 %
+    Fib converged -> Time: 474 ms, Iterations: 7, Error: 0.8386 %
+    Linear converged -> Time: 3888 ms, Iterations: 55, Error: 0.7048 %
+
+Threshold 1.0
+    Interp converged -> Time: 26 ms, Iterations: 3, Error: 0.6843 %
+    Binary converged -> Time: 94 ms, Iterations: 2, Error: 0.6843 %
+    Fib converged -> Time: 462 ms, Iterations: 7, Error: 0.2933 %
+    Linear converged -> Time: 3520 ms, Iterations: 50, Error: 0.2933 %
+
+Threshold 1.05
+    Interp converged -> Time: 26 ms, Iterations: 3, Error: 0.5446 %
+    Binary converged -> Time: 379 ms, Iterations: 6, Error: 0.0791 %
+    Fib converged -> Time: 391 ms, Iterations: 6, Error: 0.3864 %
+    Linear converged -> Time: 3288 ms, Iterations: 46, Error: 1.3173 %
+
+Threshold 1.1
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.4177 %
+    Binary converged -> Time: 390 ms, Iterations: 6, Error: 0.0267 %
+    Fib converged -> Time: 402 ms, Iterations: 6, Error: 0.8620 %
+    Linear converged -> Time: 2941 ms, Iterations: 41, Error: 0.9153 %
+
+Threshold 1.15
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.5483 %
+    Binary converged -> Time: 247 ms, Iterations: 4, Error: 0.7268 %
+    Fib converged -> Time: 330 ms, Iterations: 5, Error: 0.3018 %
+    Linear converged -> Time: 2603 ms, Iterations: 37, Error: 0.9733 %
+
+Threshold 1.2
+    Interp converged -> Time: 109 ms, Iterations: 6, Error: 0.1955 %
+    Binary converged -> Time: 10 ms, Iterations: 1, Error: 0.6191 %
+    Fib converged -> Time: 402 ms, Iterations: 6, Error: 0.2118 %
+    Linear converged -> Time: 2245 ms, Iterations: 32, Error: 0.2118 %
+
+Threshold 1.25
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.0978 %
+    Binary converged -> Time: 391 ms, Iterations: 6, Error: 0.4888 %
+    Fib converged -> Time: 474 ms, Iterations: 7, Error: 0.6843 %
+    Linear converged -> Time: 1959 ms, Iterations: 28, Error: 0.6843 %
+
+Threshold 1.3
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.7595 %
+    Binary converged -> Time: 176 ms, Iterations: 3, Error: 0.3684 %
+    Fib converged -> Time: 332 ms, Iterations: 5, Error: 0.3684 %
+    Linear converged -> Time: 1675 ms, Iterations: 24, Error: 0.7444 %
+
+Threshold 1.35
+    Interp converged -> Time: 26 ms, Iterations: 3, Error: 0.6481 %
+    Binary converged -> Time: 308 ms, Iterations: 5, Error: 0.0760 %
+    Fib converged -> Time: 320 ms, Iterations: 5, Error: 0.2860 %
+    Linear converged -> Time: 1359 ms, Iterations: 19, Error: 0.8001 %
+
+Threshold 1.4
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.1955 %
+    Binary converged -> Time: 378 ms, Iterations: 5, Error: 0.1536 %
+    Fib converged -> Time: 115 ms, Iterations: 2, Error: 0.1955 %
+    Linear converged -> Time: 1018 ms, Iterations: 14, Error: 0.1536 %
+
+Threshold 1.45
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.2258 %
+    Binary converged -> Time: 319 ms, Iterations: 5, Error: 0.2258 %
+    Fib converged -> Time: 330 ms, Iterations: 5, Error: 0.2258 %
+    Linear converged -> Time: 727 ms, Iterations: 10, Error: 0.2258 %
+
+Threshold 1.5
+    Interp converged -> Time: 108 ms, Iterations: 6, Error: 0.6191 %
+    Binary converged -> Time: 247 ms, Iterations: 4, Error: 0.3584 %
+    Fib converged -> Time: 475 ms, Iterations: 7, Error: 0.0326 %
+    Linear converged -> Time: 387 ms, Iterations: 6, Error: 0.6191 %
